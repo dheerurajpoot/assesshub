@@ -68,9 +68,17 @@ export function SignInForm() {
 
 	return (
 		<div className='mx-auto max-w-md space-y-6 p-6'>
-			<div className='space-y-2 text-center'>
-				<h1 className='text-3xl font-bold'>Sign In</h1>
-				<p className='text-muted-foreground'>
+			<div className='sm:mx-auto sm:w-full sm:max-w-md'>
+				<Link
+					href='/'
+					className='flex justify-center items-center space-x-2'>
+					<span className='inline-block h-8 w-8 rounded-full bg-teal-600'></span>
+					<span className='text-2xl font-bold'>AssessHub</span>
+				</Link>
+				<h2 className='mt-6 text-center text-2xl font-bold leading-9 tracking-tight'>
+					Sign in to your account
+				</h2>
+				<p className='mt-2 text-center text-sm text-muted-foreground'>
 					Enter your credentials to access your account
 				</p>
 			</div>
@@ -101,7 +109,7 @@ export function SignInForm() {
 					<div className='flex items-center justify-between'>
 						<Label htmlFor='password'>Password</Label>
 						<Link
-							href='/auth/reset-password'
+							href='/auth/forgot-password'
 							className='text-sm text-teal-600 hover:underline'>
 							Forgot password?
 						</Link>

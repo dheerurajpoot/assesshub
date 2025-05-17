@@ -32,13 +32,13 @@ export function DashboardSidebar() {
 
 	return (
 		<Sidebar variant='sidebar' collapsible='icon'>
-			<SidebarHeader className='mt-16 flex h-14 items-center border-b px-4'>
-				<Link href='/dashboard' className='flex items-center gap-2'>
+			<SidebarHeader className='mt-2 flex h-14 items-center border-b px-4'>
+				{/* <Link href='/dashboard' className='flex items-center gap-2'>
 					<span className='h-6 w-6 rounded-full bg-teal-600'></span>
 					<span className='font-bold'>AssessHub</span>
-				</Link>
+				</Link> */}
 			</SidebarHeader>
-			<SidebarContent>
+			<SidebarContent className='p-4'>
 				<SidebarMenu>
 					<SidebarMenuItem>
 						<SidebarMenuButton
@@ -79,20 +79,6 @@ export function DashboardSidebar() {
 									<Link href='/dashboard/candidates'>
 										<Users className='h-4 w-4' />
 										<span>Candidates</span>
-									</Link>
-								</SidebarMenuButton>
-							</SidebarMenuItem>
-
-							<SidebarMenuItem>
-								<SidebarMenuButton
-									asChild
-									isActive={
-										pathname === "/dashboard/analytics"
-									}
-									tooltip='Analytics'>
-									<Link href='/dashboard/analytics'>
-										<BarChart3 className='h-4 w-4' />
-										<span>Analytics</span>
 									</Link>
 								</SidebarMenuButton>
 							</SidebarMenuItem>

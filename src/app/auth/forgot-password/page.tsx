@@ -1,13 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import ResetPasswordForm from "./ResetPasswordForm";
+import { ForgotPasswordForm } from "@/components/auth/forgot-password-form";
 
 export const metadata: Metadata = {
-	title: "Reset Password | AssessHub",
-	description: "Reset your AssessHub account password",
+	title: "Forgot Password | AssessHub",
+	description: "Forgot your AssessHub account password",
 };
 
-export default function ResetPasswordPage() {
+export default function ForgotPasswordPage() {
 	return (
 		<div className='flex min-h-screen flex-col'>
 			<div className='flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
@@ -19,7 +19,7 @@ export default function ResetPasswordPage() {
 						<span className='text-2xl font-bold'>AssessHub</span>
 					</Link>
 					<h2 className='mt-6 text-center text-2xl font-bold leading-9 tracking-tight'>
-						Reset your password
+						Forgot your password?
 					</h2>
 					<p className='mt-2 text-center text-sm text-muted-foreground'>
 						Enter your email address and we'll send you a link to
@@ -29,7 +29,7 @@ export default function ResetPasswordPage() {
 
 				<div className='mt-10 sm:mx-auto sm:w-full sm:max-w-md'>
 					<div className='bg-white dark:bg-gray-950 px-6 py-8 shadow sm:rounded-lg sm:px-12'>
-						<ResetPasswordForm />
+						<ForgotPasswordForm />
 						<div className='mt-6'>
 							<div className='relative'>
 								<div className='absolute inset-0 flex items-center'>

@@ -11,33 +11,25 @@ const publicPaths = [
 	"/pricing",
 	"/auth/sign-in",
 	"/auth/sign-up",
-	"/auth/reset-password",
 	"/verifyemail",
+	"/auth/reset-password",
+	"/auth/forgot-password",
 ];
 
 // API routes that don't require authentication
 const publicApiRoutes = [
 	"/api/auth/login",
 	"/api/auth/register",
-	"/api/auth/reset-password",
 	"/api/auth/verify-email",
+	"/api/auth/reset-password",
+	"/api/auth/forgot-password",
 ];
 
 // Admin-only paths
-const adminOnlyPaths = [
-	"/dashboard/tests/create",
-	"/dashboard/candidates",
-	"/dashboard/analytics",
-	"/dashboard/settings/team",
-	"/dashboard/settings/billing",
-];
+const adminOnlyPaths = ["/dashboard/tests/create", "/dashboard/candidates"];
 
 // Admin-only API routes
-const adminOnlyApiRoutes = [
-	"/api/tests/create",
-	"/api/candidates",
-	"/api/analytics",
-];
+const adminOnlyApiRoutes = ["/api/tests/create", "/api/candidates"];
 
 export async function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl;

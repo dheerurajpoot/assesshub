@@ -1,13 +1,10 @@
+"use client";
 import { UserDashboard } from "@/components/dashboard/user-dashboard";
 import { AdminDashboard } from "@/components/dashboard/admin-dashboard";
-import { cookies } from "next/headers";
+import { useAuth } from "@/context/AuthContext";
 
-export default async function DashboardPage() {
-	// In a real app, you would get this from the session or JWT
-	// For this example, we'll use a cookie
-	const cookieStore = await cookies();
-	const userRole = (await cookieStore.get("user-role")?.value) || "user";
-	const isAdmin = userRole === "admin";
+export default function DashboardPage() {
+	const { isAdmin } = useAuth();
 
 	return isAdmin ? <AdminDashboard /> : <UserDashboard />;
 }

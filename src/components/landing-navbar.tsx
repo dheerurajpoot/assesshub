@@ -82,9 +82,9 @@ export function LandingNavbar() {
 										className='flex items-center gap-2 px-2'>
 										<Avatar className='h-8 w-8'>
 											<AvatarImage
-												src={`/placeholder.svg?height=32&width=32&text=${
+												src={
 													user?.name?.charAt(0) || "U"
-												}`}
+												}
 												alt={user?.name || "User"}
 											/>
 											<AvatarFallback>
@@ -103,11 +103,6 @@ export function LandingNavbar() {
 									<DropdownMenuSeparator />
 									<DropdownMenuItem asChild>
 										<Link href='/dashboard'>Dashboard</Link>
-									</DropdownMenuItem>
-									<DropdownMenuItem asChild>
-										<Link href='/dashboard/settings'>
-											Settings
-										</Link>
 									</DropdownMenuItem>
 									<DropdownMenuSeparator />
 									<DropdownMenuItem onClick={() => logout()}>

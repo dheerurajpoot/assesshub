@@ -94,7 +94,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			}
 
 			const data = await response.json();
-			console.log(data);
 			setUser(data.user);
 			router.push("/sign-in");
 			toast.success(data.message);
