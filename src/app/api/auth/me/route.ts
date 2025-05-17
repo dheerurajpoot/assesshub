@@ -5,7 +5,7 @@ import { connectDb } from "@/lib/dbconfig";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
 interface CustomJwtPayload extends JwtPayload {
-  userId: string;
+	userId: string;
 }
 
 export async function GET(request: NextRequest) {
@@ -20,8 +20,10 @@ export async function GET(request: NextRequest) {
 				{ status: 401 }
 			);
 		}
-		const decodedToken = jwt.verify(authToken, process.env.TOKEN_SECRET!) as CustomJwtPayload;
-		console.log(decodedToken);
+		const decodedToken = jwt.verify(
+			authToken,
+			process.env.TOKEN_SECRET!
+		) as CustomJwtPayload;
 		const user = await User.findOne({ _id: decodedToken.userId });
 
 		if (!user) {

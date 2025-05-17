@@ -14,13 +14,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Image from "next/image";
 
 export default function Home() {
 	return (
 		<div className='flex min-h-screen flex-col'>
 			<main className='flex-1'>
 				{/* Hero Section */}
-				<section className='w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-white to-slate-50 dark:from-gray-950 dark:to-gray-900'>
+				<section className='w-full py-8 md:py-16 lg:py-24 xl:py-32 bg-gradient-to-b from-white to-slate-50 dark:from-gray-950 dark:to-gray-900'>
 					<div className='container mx-auto px-4 md:px-6'>
 						<div className='grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]'>
 							<div className='flex flex-col justify-center space-y-4'>
@@ -71,13 +72,12 @@ export default function Home() {
 								</div>
 							</div>
 							<div className='relative hidden lg:block'>
-								<div className='absolute -left-8 -top-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] rounded-3xl bg-gradient-to-br from-teal-50 via-white to-teal-50 opacity-50 blur-xl dark:from-teal-950/30 dark:via-transparent dark:to-teal-950/30'></div>
-								<img
-									src='/placeholder.svg?height=550&width=550'
-									width='550'
-									height='550'
+								<Image
+									src='https://cdn.pixabay.com/photo/2017/09/25/11/54/to-read-the-book-2784895_1280.jpg'
+									width={550}
+									height={550}
 									alt='Assessment Platform'
-									className='relative z-10 mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square'
+									className='z-10 mx-auto overflow-hidden rounded-xl object-cover sm:w-full'
 								/>
 							</div>
 						</div>

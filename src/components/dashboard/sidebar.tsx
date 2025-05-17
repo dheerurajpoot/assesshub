@@ -32,7 +32,7 @@ export function DashboardSidebar() {
 
 	return (
 		<Sidebar variant='sidebar' collapsible='icon'>
-			<SidebarHeader className='flex h-14 items-center border-b px-4'>
+			<SidebarHeader className='mt-16 flex h-14 items-center border-b px-4'>
 				<Link href='/dashboard' className='flex items-center gap-2'>
 					<span className='h-6 w-6 rounded-full bg-teal-600'></span>
 					<span className='font-bold'>AssessHub</span>

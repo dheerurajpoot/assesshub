@@ -20,7 +20,7 @@ interface MailOptions {
 
 export const sendMail = async ({ email, emailType, userId }: MailOptions) => {
 	try {
-		const token = jwt.sign({ userId: userId }, process.env.TOKEN_SECRET!, {
+		const token = jwt.sign({ userId }, process.env.TOKEN_SECRET!, {
 			expiresIn: "1h",
 		});
 

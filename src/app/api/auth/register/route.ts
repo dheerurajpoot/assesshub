@@ -37,7 +37,6 @@ export async function POST(request: NextRequest) {
 			password: hashedPassword,
 			isVerified: false,
 		});
-
 		await user.save();
 
 		// Send verification email
@@ -46,7 +45,6 @@ export async function POST(request: NextRequest) {
 			emailType: "VERIFY",
 			userId: user._id,
 		});
-
 		return NextResponse.json({
 			message: "Please check your email to verify your account",
 			success: true,

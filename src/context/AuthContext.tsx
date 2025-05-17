@@ -9,6 +9,7 @@ import {
 } from "react";
 import { useRouter } from "next/navigation";
 import type { User } from "@/models/User";
+import { toast } from "sonner";
 
 interface AuthContextType {
 	user: User | null;
@@ -65,9 +66,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 			const data = await response.json();
 			setUser(data.user);
+			toast.success(data.message);
 			router.push("/dashboard");
 		} catch (error) {
 			console.error("Login error:", error);
+			toast.error("Login failed");
 			throw error;
 		} finally {
 			setIsLoading(false);
@@ -91,10 +94,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			}
 
 			const data = await response.json();
+			console.log(data);
 			setUser(data.user);
-			router.push("/dashboard");
+			router.push("/sign-in");
+			toast.success(data.message);
 		} catch (error) {
 			console.error("Registration error:", error);
+			toast.error("Registration failed");
 			throw error;
 		} finally {
 			setIsLoading(false);
@@ -109,8 +115,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			});
 			setUser(null);
 			router.push("/");
+			toast.success("Logout successful");
 		} catch (error) {
 			console.error("Logout error:", error);
+			toast.error("Logout failed");
+			throw error;
 		} finally {
 			setIsLoading(false);
 		}
@@ -134,8 +143,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 			const data = await response.json();
 			setUser(data.user);
+			toast.success("Update successful");
 		} catch (error) {
 			console.error("Update error:", error);
+			toast.error("Update failed");
 			throw error;
 		} finally {
 			setIsLoading(false);
