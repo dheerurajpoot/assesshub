@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Clock, Loader2 } from "lucide-react";
 
@@ -16,71 +16,34 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-
-// Mock test data
-const testData = {
-	id: "1",
-	name: "Frontend Developer Assessment",
-	description:
-		"Comprehensive test for frontend development skills including HTML, CSS, JavaScript, and React.",
-	duration: 60,
-	questions: [
-		{
-			id: "q1",
-			question: "What does CSS stand for?",
-			type: "multiple-choice",
-			options: [
-				"Cascading Style Sheets",
-				"Computer Style Sheets",
-				"Creative Style Sheets",
-				"Colorful Style Sheets",
-			],
-			correctAnswer: 0,
-		},
-		{
-			id: "q2",
-			question:
-				"Which of the following is NOT a JavaScript framework or library?",
-			type: "multiple-choice",
-			options: ["React", "Angular", "Vue", "Photoshop"],
-			correctAnswer: 3,
-		},
-		{
-			id: "q3",
-			question:
-				"What is the correct HTML element for the largest heading?",
-			type: "multiple-choice",
-			options: ["<h1>", "<heading>", "<head>", "<h6>"],
-			correctAnswer: 0,
-		},
-		{
-			id: "q4",
-			question:
-				"Which CSS property is used to change the text color of an element?",
-			type: "multiple-choice",
-			options: ["color", "text-color", "font-color", "text-style"],
-			correctAnswer: 0,
-		},
-		{
-			id: "q5",
-			question:
-				"In React, what is used to pass data to a component from outside?",
-			type: "multiple-choice",
-			options: ["props", "state", "elements", "events"],
-			correctAnswer: 0,
-		},
-	],
-};
+import axios from "axios";
 
 export function TestTaking({ testId }: { testId: string }) {
 	const router = useRouter();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [answers, setAnswers] = useState<Record<string, number>>({});
 	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [timeLeft, setTimeLeft] = useState(testData.duration * 60); // in seconds
+	const [timeLeft, setTimeLeft] = useState(0);
+	const [test, setTest] = useState<any>(null);
 
-	const question = testData.questions[currentQuestion];
-	const progress = ((currentQuestion + 1) / testData.questions.length) * 100;
+	const question = test?.questions[currentQuestion];
+	const progress = ((currentQuestion + 1) / test?.questions.length) * 100;
+
+	const getTest = async () => {
+		try {
+			const response = await axios.get(`/api/tests/test?id=${testId}`);
+			console.log(response.data.test);
+			setTest(response.data.test);
+			setTimeLeft(response.data.test.duration * 60);
+		} catch (error) {
+			console.error("Error fetching test:", error);
+			setTest(null);
+		}
+	};
+
+	useEffect(() => {
+		getTest();
+	}, [testId]);
 
 	const handleAnswer = (value: string) => {
 		setAnswers({
@@ -90,7 +53,7 @@ export function TestTaking({ testId }: { testId: string }) {
 	};
 
 	const handleNext = () => {
-		if (currentQuestion < testData.questions.length - 1) {
+		if (currentQuestion < test?.questions.length - 1) {
 			setCurrentQuestion(currentQuestion + 1);
 		}
 	};
@@ -126,10 +89,10 @@ export function TestTaking({ testId }: { testId: string }) {
 				<CardHeader>
 					<div className='flex items-center justify-between'>
 						<div>
-							<CardTitle>{testData.name}</CardTitle>
+							<CardTitle>{test?.name}</CardTitle>
 							<CardDescription>
 								Question {currentQuestion + 1} of{" "}
-								{testData.questions.length}
+								{test?.questions.length}
 							</CardDescription>
 						</div>
 						<div className='flex items-center gap-2 text-muted-foreground'>
@@ -141,28 +104,33 @@ export function TestTaking({ testId }: { testId: string }) {
 				</CardHeader>
 				<CardContent className='space-y-4'>
 					<div className='text-lg font-medium'>
-						{question.question}
+						{question?.question}
 					</div>
-					{question.type === "multiple-choice" && (
+					{question?.type === "multiple-choice" && (
 						<RadioGroup
 							value={answers[question.id]?.toString() || ""}
 							onValueChange={handleAnswer}
 							className='space-y-3'>
-							{question.options.map((option, index) => (
-								<div
-									key={index}
-									className='flex items-center space-x-2 rounded-md border p-3 hover:bg-muted/50'>
-									<RadioGroupItem
-										value={index.toString()}
-										id={`option-${index}`}
-									/>
-									<Label
-										htmlFor={`option-${index}`}
-										className='flex-1 cursor-pointer'>
-										{option}
-									</Label>
-								</div>
-							))}
+							{question?.options.map(
+								(
+									option: { text: string; id: string },
+									index: number
+								) => (
+									<div
+										key={index}
+										className='flex items-center space-x-2 rounded-md border p-3 hover:bg-muted/50'>
+										<RadioGroupItem
+											value={index.toString()}
+											id={`option-${index}`}
+										/>
+										<Label
+											htmlFor={`option-${index}`}
+											className='flex-1 cursor-pointer'>
+											{option.text}
+										</Label>
+									</div>
+								)
+							)}
 						</RadioGroup>
 					)}
 				</CardContent>
@@ -174,7 +142,7 @@ export function TestTaking({ testId }: { testId: string }) {
 						<ArrowLeft className='mr-2 h-4 w-4' />
 						Previous
 					</Button>
-					{currentQuestion < testData.questions.length - 1 ? (
+					{currentQuestion < test?.questions.length - 1 ? (
 						<Button onClick={handleNext}>
 							Next
 							<ArrowRight className='ml-2 h-4 w-4' />

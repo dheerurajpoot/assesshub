@@ -1,19 +1,14 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import type { Test } from "@/models/Test";
-
-// In a real app, this would be a database
-// For demo purposes, we're using the same tests array from the tests route
-// In a real implementation, you would import from a database module
-const tests: Test[] = [];
+import { Test } from "@/models/Test";
+import { connectDb } from "@/lib/dbconfig";
 
 // GET a specific test
-export async function GET(
-	request: NextRequest,
-	{ params }: { params: { id: string } }
-) {
+export async function GET(request: NextRequest) {
 	try {
+		await connectDb();
 		// Get auth token from cookies
+		const url = request.nextUrl;
 		const authToken = (await cookies()).get("auth-token")?.value;
 
 		if (!authToken) {
@@ -23,10 +18,10 @@ export async function GET(
 			);
 		}
 
-		const testId = params.id;
+		const testId = url.searchParams.get("id");
 
 		// Find test
-		const test = tests.find((test) => test.id === testId);
+		const test = await Test.findById(testId);
 
 		if (!test) {
 			return NextResponse.json(
@@ -51,6 +46,7 @@ export async function PUT(
 	{ params }: { params: { id: string } }
 ) {
 	try {
+		await connectDb();
 		// Get auth token from cookies
 		const authToken = (await cookies()).get("auth-token")?.value;
 
@@ -65,9 +61,9 @@ export async function PUT(
 		const testData = await request.json();
 
 		// Find test index
-		const testIndex = tests.findIndex((test) => test.id === testId);
+		const testIndex = await Test.findById(testId);
 
-		if (testIndex === -1) {
+		if (!testIndex) {
 			return NextResponse.json(
 				{ message: "Test not found" },
 				{ status: 404 }
@@ -76,13 +72,13 @@ export async function PUT(
 
 		// Update test
 		const updatedTest = {
-			...tests[testIndex],
+			...testIndex,
 			...testData,
 			updatedAt: new Date(),
 		};
 
 		// Save updated test (in a real app, this would be a database operation)
-		tests[testIndex] = updatedTest;
+		await Test.findByIdAndUpdate(testId, updatedTest);
 
 		return NextResponse.json({ test: updatedTest }, { status: 200 });
 	} catch (error) {
@@ -100,6 +96,7 @@ export async function DELETE(
 	{ params }: { params: { id: string } }
 ) {
 	try {
+		await connectDb();
 		// Get auth token from cookies
 		const authToken = (await cookies()).get("auth-token")?.value;
 
@@ -113,9 +110,9 @@ export async function DELETE(
 		const testId = params.id;
 
 		// Find test index
-		const testIndex = tests.findIndex((test) => test.id === testId);
+		const testIndex = await Test.findById(testId);
 
-		if (testIndex === -1) {
+		if (!testIndex) {
 			return NextResponse.json(
 				{ message: "Test not found" },
 				{ status: 404 }
@@ -123,7 +120,7 @@ export async function DELETE(
 		}
 
 		// Remove test (in a real app, this would be a database operation)
-		tests.splice(testIndex, 1);
+		await Test.findByIdAndDelete(testId);
 
 		return NextResponse.json(
 			{ message: "Test deleted successfully" },

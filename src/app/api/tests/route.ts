@@ -1,5 +1,4 @@
 import { type NextRequest, NextResponse } from "next/server";
-import mongoose, { Types } from "mongoose";
 import { cookies } from "next/headers";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { connectDb } from "@/lib/dbconfig";

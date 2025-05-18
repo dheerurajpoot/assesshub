@@ -38,7 +38,7 @@ export function UserTestsList({ tests }: { tests: any[] }) {
 								</TableCell>
 								<TableCell>{test.type}</TableCell>
 								<TableCell>
-									{test.isActive ? (
+									{!test.isActive ? (
 										<Badge className='bg-green-500 hover:bg-green-600'>
 											<CheckCircle className='mr-1 h-3 w-3' />
 											Completed
@@ -57,7 +57,7 @@ export function UserTestsList({ tests }: { tests: any[] }) {
 									{new Date(test.createdAt).toDateString()}
 								</TableCell>
 								<TableCell className='text-right'>
-									{test.isActive ? (
+									{!test.isActive ? (
 										<Link
 											href={`/test-results/${test._id}`}>
 											<Button variant='outline' size='sm'>

@@ -1,8 +1,5 @@
 "use client";
-import Link from "next/link";
-import { Plus, Search, UserPlus } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { CandidatesList } from "@/components/dashboard/candidates-list";
 import { CandidatesStats } from "@/components/dashboard/candidates-stats";
