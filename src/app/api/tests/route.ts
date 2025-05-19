@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { connectDb } from "@/lib/dbconfig";
 import { Test } from "@/models/Test";
+import mongoose from "mongoose";
 
 // GET user tests
 export async function GET() {
@@ -73,6 +74,7 @@ export async function POST(request: NextRequest) {
 
 		// Create new test
 		const newTest: Test = {
+			_id: new mongoose.Types.ObjectId().toString(),
 			name: testData.name,
 			description: testData.description || "",
 			type: testData.type,
