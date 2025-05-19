@@ -9,12 +9,31 @@ export interface Candidate {
 	createdAt: string;
 }
 
-export interface Test {
+export type QuestionType = "multiple-choice" | "true-false" | "short-answer";
+
+export interface Option {
 	id: string;
-	title: string;
+	text: string;
+}
+
+export interface Question {
+	id: string;
+	type: QuestionType;
+	question: string;
+	options?: Option[];
+	correctAnswer?: number;
+}
+
+export interface Test {
+	_id: string;
+	name: string;
 	description?: string;
-	status: string;
-	dueDate?: string;
-	createdAt: string;
-	// Add other relevant fields based on your data structure
+	type: "assessment" | "quiz" | "exam" | "interview";
+	questions: Question[];
+	duration: number; // in minutes
+	passingScore: number; // percentage
+	isActive: boolean;
+	userId: string;
+	createdAt: Date;
+	updatedAt: Date;
 }
