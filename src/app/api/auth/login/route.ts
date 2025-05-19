@@ -61,6 +61,7 @@ export async function POST(request: NextRequest) {
 				name: user.name,
 				email: user.email,
 				role: user.role,
+				givenTests: user.givenTests,
 				isBlocked: user.isBlocked,
 			},
 		});

@@ -14,7 +14,7 @@ export default async function TakeTestPage({
 }) {
 	return (
 		<div className='container mx-auto py-8'>
-			<TestTaking testId={params.id} />
+			<TestTaking testId={await params.id} />
 		</div>
 	);
 }

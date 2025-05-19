@@ -12,8 +12,10 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import { useAuth } from "@/context/AuthContext";
 
 export function UserTestsList({ tests }: { tests: any[] }) {
+	const { user } = useAuth();
 	return (
 		<div className='rounded-md border'>
 			{tests.length === 0 ? (
@@ -38,7 +40,7 @@ export function UserTestsList({ tests }: { tests: any[] }) {
 								</TableCell>
 								<TableCell>{test.type}</TableCell>
 								<TableCell>
-									{!test.isActive ? (
+									{user?.givenTests?.includes(test._id) ? (
 										<Badge className='bg-green-500 hover:bg-green-600'>
 											<CheckCircle className='mr-1 h-3 w-3' />
 											Completed
@@ -57,7 +59,7 @@ export function UserTestsList({ tests }: { tests: any[] }) {
 									{new Date(test.createdAt).toDateString()}
 								</TableCell>
 								<TableCell className='text-right'>
-									{!test.isActive ? (
+									{user?.givenTests?.includes(test._id) ? (
 										<Link
 											href={`/test-results/${test._id}`}>
 											<Button variant='outline' size='sm'>

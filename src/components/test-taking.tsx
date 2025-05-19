@@ -17,6 +17,7 @@ import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
+import { toast } from "sonner";
 
 export function TestTaking({ testId }: { testId: string }) {
 	const router = useRouter();
@@ -32,7 +33,6 @@ export function TestTaking({ testId }: { testId: string }) {
 	const getTest = async () => {
 		try {
 			const response = await axios.get(`/api/tests/test?id=${testId}`);
-			console.log(response.data.test);
 			setTest(response.data.test);
 			setTimeLeft(response.data.test.duration * 60);
 		} catch (error) {
@@ -64,14 +64,22 @@ export function TestTaking({ testId }: { testId: string }) {
 		}
 	};
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		setIsSubmitting(true);
 
-		// Simulate submission
-		setTimeout(() => {
+		try {
+			const response = await axios.post(`/api/tests/submit`, {
+				testId,
+			});
+			toast.success(response.data.message);
+			setTimeout(() => {
+				setIsSubmitting(false);
+				router.push(`/test-results/${testId}`);
+			}, 1500);
+		} catch (error) {
+			console.error("Error submitting test:", error);
 			setIsSubmitting(false);
-			router.push(`/test-results/${testId}`);
-		}, 1500);
+		}
 	};
 
 	// Format time left as mm:ss

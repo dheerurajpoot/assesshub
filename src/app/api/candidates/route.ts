@@ -1,6 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { v4 as uuidv4 } from "uuid";
 import { connectDb } from "@/lib/dbconfig";
 import { User } from "@/models/User";
 

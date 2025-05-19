@@ -17,7 +17,12 @@ interface AuthContextType {
 	isAuthenticated: boolean;
 	isAdmin: boolean;
 	login: (email: string, password: string) => Promise<void>;
-	register: (name: string, email: string, password: string) => Promise<void>;
+	register: (
+		name: string,
+		email: string,
+		phone: string,
+		password: string
+	) => Promise<void>;
 	logout: () => Promise<void>;
 	updateUser: (userData: Partial<User>) => Promise<void>;
 }
@@ -28,6 +33,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 	const [user, setUser] = useState<User | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const router = useRouter();
+
+	useEffect(() => {
+		const storedUser = localStorage.getItem("user");
+		if (storedUser) {
+			setUser(JSON.parse(storedUser));
+		}
+		setIsLoading(false);
+	}, []);
 
 	useEffect(() => {
 		// Check if user is already logged in
@@ -65,6 +78,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			}
 
 			const data = await response.json();
+			localStorage.setItem("user", JSON.stringify(data.user));
 			setUser(data.user);
 			toast.success(data.message);
 			router.push("/dashboard");
@@ -77,7 +91,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 		}
 	};
 
-	const register = async (name: string, email: string, password: string) => {
+	const register = async (
+		name: string,
+		email: string,
+		phone: string,
+		password: string
+	) => {
 		setIsLoading(true);
 		try {
 			const response = await fetch("/api/auth/register", {
@@ -85,7 +104,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ name, email, password }),
+				body: JSON.stringify({ name, email, phone, password }),
 			});
 
 			if (!response.ok) {
@@ -112,6 +131,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			await fetch("/api/auth/logout", {
 				method: "POST",
 			});
+			localStorage.removeItem("user");
 			setUser(null);
 			router.push("/");
 			toast.success("Logout successful");
@@ -141,6 +161,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			}
 
 			const data = await response.json();
+			localStorage.setItem("user", JSON.stringify(data.user));
 			setUser(data.user);
 			toast.success("Update successful");
 		} catch (error) {

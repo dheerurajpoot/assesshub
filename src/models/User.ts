@@ -5,6 +5,8 @@ export interface User {
 	name: string;
 	email: string;
 	role: "admin" | "user";
+	givenTests: string[];
+	phone: string;
 	createdAt: Date;
 	updatedAt: Date;
 }
@@ -21,6 +23,11 @@ const userModel = new mongoose.Schema(
 			unique: true,
 			trim: true,
 			lowercase: true,
+		},
+		phone: {
+			type: String,
+			required: true,
+			trim: true,
 		},
 		password: {
 			type: String,
@@ -40,6 +47,12 @@ const userModel = new mongoose.Schema(
 			enum: ["user", "admin"],
 			default: "user",
 		},
+		givenTests: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "Test",
+			},
+		],
 		forgotPasswordToken: String,
 		forgotPasswordTokenExpiry: Date,
 		verifyToken: String,
