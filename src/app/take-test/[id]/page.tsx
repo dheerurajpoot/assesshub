@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 export default async function TakeTestPage({
 	params,
 }: {
-	params: { id: string };
+	params: Promise<{ id: string }>;
 }) {
 	return (
 		<div className='container mx-auto py-8'>
-			<TestTaking testId={await params.id} />
+			<TestTaking testId={(await params).id} />
 		</div>
 	);
 }
