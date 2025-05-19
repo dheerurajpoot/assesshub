@@ -1,7 +1,5 @@
 "use client";
-import type { Metadata } from "next";
 import { Search } from "lucide-react";
-
 import { Input } from "@/components/ui/input";
 import { UserTestsList } from "@/components/dashboard/user-tests-list";
 import { useState } from "react";

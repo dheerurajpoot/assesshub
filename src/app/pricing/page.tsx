@@ -25,8 +25,8 @@ export default function PricingPage() {
 									Simple, Transparent Pricing
 								</h1>
 								<p className='max-w-[800px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-									Choose the plan that's right for your team.
-									All plans include a 14-day free trial.
+									Choose the plan that&apos;s right for your
+									team. All plans include a 14-day free trial.
 								</p>
 							</div>
 							<PricingToggle />
@@ -424,10 +424,10 @@ export default function PricingPage() {
 									What happens if I exceed my plan limits?
 								</h3>
 								<p className='text-gray-500 dark:text-gray-400'>
-									We'll notify you when you're approaching
-									your limits. You can upgrade your plan or
-									pay for additional usage at pro-rated
-									prices.
+									We&apos;ll notify you when you&apos;re
+									preaching your limits. You can upgrade your
+									plan or pay for additional usage at
+									pro-rated prices.
 								</p>
 							</div>
 						</div>

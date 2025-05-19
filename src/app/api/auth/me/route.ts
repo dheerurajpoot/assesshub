@@ -37,6 +37,7 @@ export async function GET(request: NextRequest) {
 		const safeUser = {
 			id: user.id,
 			name: user.name,
+			givenTests: user.givenTests,
 			email: user.email,
 			role: user.role,
 			createdAt: user.createdAt,

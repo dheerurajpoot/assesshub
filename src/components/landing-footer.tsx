@@ -19,30 +19,16 @@ export function LandingFooter() {
 						<ul className='space-y-2 text-sm'>
 							<li>
 								<Link
-									href='#'
+									href='/'
 									className='text-muted-foreground hover:text-foreground'>
 									Features
 								</Link>
 							</li>
 							<li>
 								<Link
-									href='#'
+									href='/pricing'
 									className='text-muted-foreground hover:text-foreground'>
 									Pricing
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='#'
-									className='text-muted-foreground hover:text-foreground'>
-									Testimonials
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='#'
-									className='text-muted-foreground hover:text-foreground'>
-									FAQ
 								</Link>
 							</li>
 						</ul>
@@ -52,28 +38,14 @@ export function LandingFooter() {
 						<ul className='space-y-2 text-sm'>
 							<li>
 								<Link
-									href='#'
+									href='/about'
 									className='text-muted-foreground hover:text-foreground'>
 									About
 								</Link>
 							</li>
 							<li>
 								<Link
-									href='#'
-									className='text-muted-foreground hover:text-foreground'>
-									Blog
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='#'
-									className='text-muted-foreground hover:text-foreground'>
-									Careers
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='#'
+									href='/contact'
 									className='text-muted-foreground hover:text-foreground'>
 									Contact
 								</Link>
@@ -85,23 +57,16 @@ export function LandingFooter() {
 						<ul className='space-y-2 text-sm'>
 							<li>
 								<Link
-									href='#'
+									href='/privacy'
 									className='text-muted-foreground hover:text-foreground'>
 									Privacy Policy
 								</Link>
 							</li>
 							<li>
 								<Link
-									href='#'
+									href='/terms'
 									className='text-muted-foreground hover:text-foreground'>
 									Terms of Service
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='#'
-									className='text-muted-foreground hover:text-foreground'>
-									Cookie Policy
 								</Link>
 							</li>
 						</ul>

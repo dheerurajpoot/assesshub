@@ -29,7 +29,7 @@ export default function PrivacyPage() {
 								This Privacy Policy explains how we collect,
 								use, disclose, and safeguard your information
 								when you use our platform, website, and services
-								(collectively, the "Services").
+								(collectively, the &quot;Services&quot;).
 							</p>
 							<p className='text-gray-600 dark:text-gray-300'>
 								Please read this Privacy Policy carefully. By
@@ -213,7 +213,7 @@ export default function PrivacyPage() {
 
 						<div className='space-y-4'>
 							<h2 className='text-2xl font-bold'>
-								8. Children's Privacy
+								8. Children&apos;s Privacy
 							</h2>
 							<p className='text-gray-600 dark:text-gray-300'>
 								Our Services are not intended for individuals
@@ -233,8 +233,8 @@ export default function PrivacyPage() {
 								We may update our Privacy Policy from time to
 								time. We will notify you of any changes by
 								posting the new Privacy Policy on this page and
-								updating the "Last Updated" date. You are
-								advised to review this Privacy Policy
+								updating the &quot;Last Updated&quot; date. You
+								are advised to review this Privacy Policy
 								periodically for any changes.
 							</p>
 						</div>

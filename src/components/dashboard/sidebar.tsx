@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-	BarChart3,
-	FileText,
-	LayoutDashboard,
-	LogOut,
-	Users,
-} from "lucide-react";
+import { FileText, LayoutDashboard, LogOut, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
 	Sidebar,

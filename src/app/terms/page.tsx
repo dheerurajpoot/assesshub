@@ -27,10 +27,10 @@ export default function TermsPage() {
 							</h2>
 							<p className='text-gray-600 dark:text-gray-300'>
 								Welcome to AssessHub. These Terms of Service
-								("Terms") govern your access to and use of the
-								AssessHub platform, including any websites,
-								mobile applications, and services offered by
-								AssessHub ("Services").
+								(&quot;Terms&quot;) govern your access to and
+								use of the AssessHub platform, including any
+								websites, mobile applications, and services
+								offered by AssessHub (&quot;Services&quot;).
 							</p>
 							<p className='text-gray-600 dark:text-gray-300'>
 								By accessing or using our Services, you agree to
@@ -104,13 +104,13 @@ export default function TermsPage() {
 							<p className='text-gray-600 dark:text-gray-300'>
 								Our Services allow you to create, upload, store,
 								and share content, including assessment tests,
-								questions, and other materials ("Content"). You
-								retain all rights to your Content, but you grant
-								AssessHub a worldwide, non-exclusive,
-								royalty-free license to use, reproduce, modify,
-								adapt, publish, translate, and distribute your
-								Content in connection with providing the
-								Services.
+								questions, and other materials
+								(&quot;Content&quot;). You retain all rights to
+								your Content, but you grant AssessHub a
+								worldwide, non-exclusive, royalty-free license
+								to use, reproduce, modify, adapt, publish,
+								translate, and distribute your Content in
+								connection with providing the Services.
 							</p>
 							<p className='text-gray-600 dark:text-gray-300'>
 								You represent and warrant that you own or have
@@ -156,10 +156,10 @@ export default function TermsPage() {
 								7. Disclaimer of Warranties
 							</h2>
 							<p className='text-gray-600 dark:text-gray-300'>
-								THE SERVICES ARE PROVIDED "AS IS" AND "AS
-								AVAILABLE" WITHOUT WARRANTIES OF ANY KIND,
-								EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT
-								LIMITED TO, IMPLIED WARRANTIES OF
+								THE SERVICES ARE PROVIDED &quot;AS IS&quot; AND
+								&quot;AS AVAILABLE&quot; WITHOUT WARRANTIES OF
+								ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+								BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
 								MERCHANTABILITY, FITNESS FOR A PARTICULAR
 								PURPOSE, AND NON-INFRINGEMENT.
 							</p>
@@ -188,11 +188,11 @@ export default function TermsPage() {
 								make changes, we will provide notice of such
 								changes, such as by sending an email
 								notification, providing notice through the
-								Services, or updating the "Last Updated" date at
-								the beginning of these Terms. Your continued use
-								of the Services following the notification of
-								changes will constitute your acceptance of such
-								changes.
+								Services, or updating the &quot;Last
+								Updated&quot; date at the beginning of these
+								Terms. Your continued use of the Services
+								following the notification of changes will
+								constitute your acceptance of such changes.
 							</p>
 						</div>
 

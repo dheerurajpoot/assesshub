@@ -31,7 +31,7 @@ export default function AboutPage() {
 									About AssessHub
 								</h1>
 								<p className='max-w-[800px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-									We're on a mission to transform how
+									We&apos;re on a mission to transform how
 									organizations evaluate talent and make
 									hiring decisions.
 								</p>
@@ -251,7 +251,7 @@ export default function AboutPage() {
 									Excellence
 								</h3>
 								<p className='text-gray-500 dark:text-gray-400'>
-									We're committed to building the highest
+									We&apos;re committed to building the highest
 									quality assessment tools backed by rigorous
 									research and continuous improvement.
 								</p>

@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 
@@ -23,8 +23,6 @@ export function SignInForm() {
 
 	const { login } = useAuth();
 	const router = useRouter();
-	const searchParams = useSearchParams();
-	const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
 
 	const validateForm = () => {
 		const newErrors: Record<string, string> = {};
@@ -55,7 +53,7 @@ export function SignInForm() {
 
 		try {
 			await login(email, password);
-			router.push(callbackUrl);
+			router.push("/dashboard");
 		} catch (error) {
 			console.error("Login error:", error);
 			setFormError(
