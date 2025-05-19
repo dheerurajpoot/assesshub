@@ -18,6 +18,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
 import { toast } from "sonner";
+import type { Test } from "@/models/Test";
 
 export function TestTaking({ testId }: { testId: string }) {
 	const router = useRouter();
@@ -25,10 +26,10 @@ export function TestTaking({ testId }: { testId: string }) {
 	const [answers, setAnswers] = useState<Record<string, number>>({});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [timeLeft, setTimeLeft] = useState(0);
-	const [test, setTest] = useState<any>(null);
+	const [test, setTest] = useState<Test | null>(null);
 
-	const question = test?.questions[currentQuestion];
-	const progress = ((currentQuestion + 1) / test?.questions.length) * 100;
+	const question = test?.questions?.[currentQuestion];
+	const progress = ((currentQuestion + 1) / (test?.questions?.length ?? 1)) * 100;
 
 	const getTest = async () => {
 		try {
@@ -46,6 +47,7 @@ export function TestTaking({ testId }: { testId: string }) {
 	}, [testId]);
 
 	const handleAnswer = (value: string) => {
+		if (!question) return;
 		setAnswers({
 			...answers,
 			[question.id]: Number.parseInt(value),
@@ -53,7 +55,7 @@ export function TestTaking({ testId }: { testId: string }) {
 	};
 
 	const handleNext = () => {
-		if (currentQuestion < test?.questions.length - 1) {
+		if (test?.questions && currentQuestion < test.questions.length - 1) {
 			setCurrentQuestion(currentQuestion + 1);
 		}
 	};
@@ -112,14 +114,14 @@ export function TestTaking({ testId }: { testId: string }) {
 				</CardHeader>
 				<CardContent className='space-y-4'>
 					<div className='text-lg font-medium'>
-						{question?.question}
+						{question?.question ?? ""}
 					</div>
-					{question?.type === "multiple-choice" && (
+					{question?.type === "multiple-choice" && question?.options && (
 						<RadioGroup
 							value={answers[question.id]?.toString() || ""}
 							onValueChange={handleAnswer}
 							className='space-y-3'>
-							{question?.options.map(
+							{question.options.map(
 								(
 									option: { text: string; id: string },
 									index: number
@@ -150,7 +152,7 @@ export function TestTaking({ testId }: { testId: string }) {
 						<ArrowLeft className='mr-2 h-4 w-4' />
 						Previous
 					</Button>
-					{currentQuestion < test?.questions.length - 1 ? (
+					{test?.questions && currentQuestion < test.questions.length - 1 ? (
 						<Button onClick={handleNext}>
 							Next
 							<ArrowRight className='ml-2 h-4 w-4' />

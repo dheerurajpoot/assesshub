@@ -26,7 +26,7 @@ export function AdminDashboard() {
 						Admin Dashboard
 					</h1>
 					<p className='text-muted-foreground'>
-						Welcome back! Here's an overview of your assessment
+						Welcome back! Here&apos;s an overview of your assessment
 						platform.
 					</p>
 				</div>

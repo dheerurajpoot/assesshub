@@ -14,9 +14,10 @@ import { SidebarTrigger } from "../ui/sidebar";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import type { Test } from "@/models/Test";
 
 export function UserDashboard() {
-	const [tests, setTests] = useState<any[]>([]);
+	const [tests, setTests] = useState<Test[]>([]);
 
 	const getTests = async () => {
 		try {
@@ -40,7 +41,7 @@ export function UserDashboard() {
 					My Dashboard
 				</h1>
 				<p className='text-muted-foreground'>
-					Welcome back! Here's an overview of your assessments.
+					Welcome back! Here&apos;s an overview of your assessments.
 				</p>
 			</div>
 

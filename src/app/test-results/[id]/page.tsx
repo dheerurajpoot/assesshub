@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Test } from "@/models/Test";
 
 export default function TestResultsPage({
 	params,
@@ -18,7 +19,7 @@ export default function TestResultsPage({
 	params: Promise<{ id: string }>;
 }) {
 	const resolvedParams = use(params);
-	const [test, setTest] = useState<any>(null);
+	const [test, setTest] = useState<Test | null>(null);
 
 	const getTest = async () => {
 		try {

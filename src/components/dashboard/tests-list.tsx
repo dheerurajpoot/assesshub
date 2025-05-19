@@ -19,8 +19,9 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import type { Test } from "@/models/Test";
 
-export function TestsList({ tests }: { tests: any[] }) {
+export function TestsList({ tests }: { tests: Test[] }) {
 	return (
 		<div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
 			{tests.length === 0 ? (

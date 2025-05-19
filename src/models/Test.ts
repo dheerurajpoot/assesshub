@@ -16,6 +16,7 @@ export interface Question {
 }
 
 export interface Test {
+	_id: string;
 	name: string;
 	description?: string;
 	type: "assessment" | "quiz" | "exam" | "interview";

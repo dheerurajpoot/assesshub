@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
 
 		const test = await Test.create(newTest);
 
-		return NextResponse.json({ test: newTest }, { status: 201 });
+		return NextResponse.json({ test }, { status: 201 });
 	} catch (error) {
 		console.error("Create test error:", error);
 		return NextResponse.json(

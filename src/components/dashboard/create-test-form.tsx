@@ -115,7 +115,7 @@ export function CreateTestForm() {
 		}
 	};
 
-	const updateQuestion = (index: number, field: string, value: any) => {
+	const updateQuestion = (index: number, field: keyof Question, value: Question[keyof Question]) => {
 		const updatedQuestions = [...questions];
 		updatedQuestions[index] = {
 			...updatedQuestions[index],

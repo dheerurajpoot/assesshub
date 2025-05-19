@@ -13,8 +13,9 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { useAuth } from "@/context/AuthContext";
+import type { Test } from "@/models/Test";
 
-export function UserTestsList({ tests }: { tests: any[] }) {
+export function UserTestsList({ tests }: { tests: Test[] }) {
 	const { user } = useAuth();
 	return (
 		<div className='rounded-md border'>

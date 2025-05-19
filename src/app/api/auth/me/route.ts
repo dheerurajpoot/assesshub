@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { User } from "@/models/User";
 import { connectDb } from "@/lib/dbconfig";
@@ -8,7 +8,7 @@ interface CustomJwtPayload extends JwtPayload {
 	userId: string;
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
 	try {
 		await connectDb();
 		// Get auth token from cookies

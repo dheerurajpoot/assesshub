@@ -266,8 +266,8 @@ export default function AboutPage() {
 								<p className='text-gray-500 dark:text-gray-400'>
 									We believe in the power of objective data to
 									inform better decisions, both in our product
-									development and in our customers' hiring
-									processes.
+									development and in our customers&apos;
+									hiring processes.
 								</p>
 							</div>
 							<div className='flex flex-col space-y-4 rounded-lg border p-6 shadow-sm'>

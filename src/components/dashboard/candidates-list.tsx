@@ -20,77 +20,9 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Progress } from "@/components/ui/progress";
+import { Candidate } from "@/types";
 
-const candidates = [
-	{
-		id: "1",
-		name: "Alex Johnson",
-		email: "alex.johnson@example.com",
-		phone: "+1 (555) 123-4567",
-		position: "Frontend Developer",
-		status: "completed",
-		score: 85,
-		date: "May 15, 2025",
-		avatar: "AJ",
-	},
-	{
-		id: "2",
-		name: "Samantha Lee",
-		email: "samantha.lee@example.com",
-		phone: "+1 (555) 987-6543",
-		position: "UX Designer",
-		status: "completed",
-		score: 92,
-		date: "May 14, 2025",
-		avatar: "SL",
-	},
-	{
-		id: "3",
-		name: "Michael Chen",
-		email: "michael.chen@example.com",
-		phone: "+1 (555) 456-7890",
-		position: "Product Manager",
-		status: "in_progress",
-		score: 0,
-		date: "May 13, 2025",
-		avatar: "MC",
-	},
-	{
-		id: "4",
-		name: "Emily Rodriguez",
-		email: "emily.rodriguez@example.com",
-		phone: "+1 (555) 234-5678",
-		position: "Data Analyst",
-		status: "invited",
-		score: 0,
-		date: "May 12, 2025",
-		avatar: "ER",
-	},
-	{
-		id: "5",
-		name: "David Kim",
-		email: "david.kim@example.com",
-		phone: "+1 (555) 876-5432",
-		position: "Backend Developer",
-		status: "completed",
-		score: 78,
-		date: "May 11, 2025",
-		avatar: "DK",
-	},
-	{
-		id: "6",
-		name: "Jessica Taylor",
-		email: "jessica.taylor@example.com",
-		phone: "+1 (555) 345-6789",
-		position: "Marketing Specialist",
-		status: "invited",
-		score: 0,
-		date: "May 10, 2025",
-		avatar: "JT",
-	},
-];
-
-export function CandidatesList({ candidates }: { candidates: any[] }) {
+export function CandidatesList({ candidates }: { candidates: Candidate[] }) {
 	return (
 		<div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
 			{candidates?.map((candidate) => (

@@ -5,9 +5,10 @@ import { CandidatesList } from "@/components/dashboard/candidates-list";
 import { CandidatesStats } from "@/components/dashboard/candidates-stats";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Candidate } from "@/types";
 
 export default function CandidatesPage() {
-	const [candidates, setCandidates] = useState<any>([]);
+	const [candidates, setCandidates] = useState<Candidate[]>([]);
 	const getCandidates = async () => {
 		try {
 			const response = await axios.get("/api/candidates");

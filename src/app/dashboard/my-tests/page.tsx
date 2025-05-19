@@ -5,9 +5,10 @@ import { UserTestsList } from "@/components/dashboard/user-tests-list";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import { Test } from "@/types";
 
 export default function MyTestsPage() {
-	const [tests, setTests] = useState<any[]>([]);
+	const [tests, setTests] = useState<Test[]>([]);
 
 	const getTests = async () => {
 		try {

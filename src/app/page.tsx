@@ -293,11 +293,11 @@ export default function Home() {
 												Technical Assessments
 											</h3>
 											<p className='text-gray-500 dark:text-gray-400'>
-												Evaluate candidates' technical
-												skills with coding challenges,
-												multiple-choice questions, and
-												problem-solving exercises.
-												Perfect for software
+												Evaluate candidates&apos;
+												technical skills with coding
+												challenges, multiple-choice
+												questions, and problem-solving
+												exercises. Perfect for software
 												development, engineering, and IT
 												roles.
 											</p>
@@ -343,9 +343,9 @@ export default function Home() {
 												Behavioral Interviews
 											</h3>
 											<p className='text-gray-500 dark:text-gray-400'>
-												Assess candidates' soft skills,
-												communication abilities, and
-												cultural fit with structured
+												Assess candidates&apos; soft
+												skills, communication abilities,
+												and cultural fit with structured
 												behavioral interview questions.
 												Ideal for management, customer
 												service, and team-oriented
@@ -490,7 +490,8 @@ export default function Home() {
 													))}
 											</div>
 											<p className='text-gray-600 dark:text-gray-300'>
-												"{testimonial.quote}"
+												&ldquo;{testimonial.quote}
+												&rdquo;
 											</p>
 											<div className='flex items-center space-x-4'>
 												<div className='h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-800'>

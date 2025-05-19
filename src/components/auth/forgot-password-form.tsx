@@ -59,8 +59,8 @@ export function ForgotPasswordForm() {
 					Check your email
 				</AlertTitle>
 				<AlertDescription className='text-teal-700 dark:text-teal-400'>
-					We've sent a password reset link to your email. Please check
-					your email and follow the instructions to reset your
+					We&apos;ve sent a password reset link to your email. Please
+					check your email and follow the instructions to reset your
 					password.
 				</AlertDescription>
 			</Alert>

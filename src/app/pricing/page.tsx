@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import { LandingNavbar } from "@/components/landing-navbar";
-import { LandingFooter } from "@/components/landing-footer";
 import { PricingToggle } from "@/components/pricing-toggle";
 
 export const metadata: Metadata = {
@@ -403,8 +400,9 @@ export default function PricingPage() {
 								</h3>
 								<p className='text-gray-500 dark:text-gray-400'>
 									Yes, you can cancel your subscription at any
-									time. You'll continue to have access until
-									the end of your current billing period.
+									time. You&apos;ll continue to have access
+									until the end of your current billing
+									period.
 								</p>
 							</div>
 							<div className='space-y-2'>

@@ -54,8 +54,6 @@ export async function middleware(request: NextRequest) {
 		// Check admin permissions for admin-only API routes
 		if (adminOnlyApiRoutes.some((route) => pathname.startsWith(route))) {
 			try {
-				// In a real app, you would decode the JWT to get the user role
-				// For this example, we'll use a simple cookie approach
 				const userRole = request.cookies.get("user-role")?.value;
 
 				if (userRole !== "admin") {
@@ -65,6 +63,7 @@ export async function middleware(request: NextRequest) {
 					);
 				}
 			} catch (error) {
+				console.error("Error checking admin permissions:", error);
 				return NextResponse.json(
 					{ message: "Invalid authentication" },
 					{ status: 401 }
@@ -93,8 +92,6 @@ export async function middleware(request: NextRequest) {
 	// Check admin permissions for admin-only paths
 	if (adminOnlyPaths.some((path) => pathname.startsWith(path))) {
 		try {
-			// In a real app, you would decode the JWT to get the user role
-			// For this example, we'll use a simple cookie approach
 			const userRole = request.cookies.get("user-role")?.value;
 
 			if (userRole !== "admin") {
@@ -103,6 +100,7 @@ export async function middleware(request: NextRequest) {
 				);
 			}
 		} catch (error) {
+			console.error("Error checking admin permissions:", error);
 			return NextResponse.redirect(new URL("/auth/sign-in", request.url));
 		}
 	}

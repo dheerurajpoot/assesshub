@@ -1,10 +1,10 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { connectDb } from "@/lib/dbconfig";
 import { User } from "@/models/User";
 
 // GET all candidates
-export async function GET(request: NextRequest) {
+export async function GET() {
 	try {
 		await connectDb();
 		// Get auth token from cookies
