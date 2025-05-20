@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import ResetPasswordForm from "./ResetPasswordForm";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
 	title: "Reset Password | AssessHub",
@@ -29,7 +30,9 @@ export default function ResetPasswordPage() {
 
 				<div className='mt-10 sm:mx-auto sm:w-full sm:max-w-md'>
 					<div className='bg-white dark:bg-gray-950 px-6 py-8 shadow sm:rounded-lg sm:px-12'>
-						<ResetPasswordForm />
+						<Suspense fallback={<div>Loading...</div>}>
+							<ResetPasswordForm />
+						</Suspense>
 						<div className='mt-6'>
 							<div className='relative'>
 								<div className='absolute inset-0 flex items-center'>
